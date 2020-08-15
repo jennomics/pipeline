@@ -4,18 +4,18 @@
 echo "Retrieving data from S3..."
 ###############
 
-aws s3 cp s3://awsjenna-data/test_data.zip .
+aws s3 cp s3://awsjenna-staging/test_data.tar.gz s3://awsjenna-data/
 
 
-unzip test_data.zip
+tar -xvf /mnt/fsx/test_data.tar.gz
 
 echo "###############"
 echo "Converting fastq to bam..."
 ###############
 
 dirname="test_data"
-index="/mnt/efs/reference/hg38/Homo_sapiens_assembly38.fasta"
-threads=16
+index="/mnt/fsx/reference/hg38/Homo_sapiens_assembly38.fasta"
+threads=8
 
 cd $dirname
 for fwd in `ls *reads_1.fastq`; 
@@ -30,7 +30,7 @@ echo "###############"
 echo "Writing results to S3..."
 ###############
 
-aws s3 mv ${dirname}_bamfiles.tar.gz s3://awsjenna-results/
+aws s3 mv ${dirname}_bamfiles.tar.gz s3://awsjenna-data/results/
 
 echo "###############"
 echo "Terminating instance..."
