@@ -31,7 +31,7 @@ echo "Writing results to S3..."
 ###############
 
 aws s3 mv ${dirname}_bamfiles.tar.gz s3://awsjenna-data/results/
-
+aws s3 rm s3://awsjenna-staging/test_data.tar.gz
 echo "###############"
 echo "Terminating instance..."
 ###############
