@@ -14,7 +14,7 @@ echo "Converting fastq to bam..."
 ###############
 
 dirname="test_data"
-index="/mnt/fsx/reference/hg38/Homo_sapiens_assembly38.fasta"
+index="/mnt/fsx/reference/hg38/Homo_sapiens_assembly38.fasta.64"
 threads=8
 
 cd $dirname
@@ -32,6 +32,7 @@ echo "Writing results to S3..."
 
 aws s3 mv ${dirname}_bamfiles.tar.gz s3://awsjenna-data/results/
 aws s3 rm s3://awsjenna-staging/test_data.tar.gz
+
 echo "###############"
 echo "Terminating instance..."
 ###############
