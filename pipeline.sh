@@ -8,7 +8,7 @@ aws s3 cp s3://awsjenna-staging/test_data.tar.gz s3://awsjenna-data/raw_data/
 
 
 tar -xvf /mnt/fsx/test_data.tar.gz
-
+rm /mnt/fsx/test_data.tar.gz
 echo "###############"
 echo "Converting fastq to bam..."
 ###############
