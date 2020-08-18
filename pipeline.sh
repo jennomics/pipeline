@@ -37,4 +37,4 @@ echo "###############"
 echo "Terminating instance..."
 ###############
 
-#for f in `curl -s http://169.254.169.254/latest/meta-data/instance-id`; do aws ec2 terminate-instances --region us-west-2 --instance-ids $f; done
+for f in `curl -s http://169.254.169.254/latest/meta-data/instance-id`; do aws ec2 terminate-instances --region us-west-2 --instance-ids $f; done
